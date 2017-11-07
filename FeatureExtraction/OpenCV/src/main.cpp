@@ -184,7 +184,7 @@ int main(int argc, char** argv)
     GenerateTestingData();
 
 //     Mat img = imread("test.jpg");
-//     vector<float>descriptors = Feature::GetHogDescriptor144(img);
+//     vector<float>descriptors = Feature::GetHogDescriptor_32x64_144(img);
 //     cout << descriptors.size() << endl;
 //     imshow("test", img);
 //     waitKey(0);

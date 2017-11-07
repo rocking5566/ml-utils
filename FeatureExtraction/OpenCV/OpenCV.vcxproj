@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Feature.h" />
+    <ClInclude Include="src\FileIterator.h" />
+    <ClInclude Include="src\LibSVMDataWriter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Feature.cpp" />
+    <ClCompile Include="src\FileIterator.cpp" />
+    <ClCompile Include="src\LibSVMDataWriter.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{511526CC-6D27-48CE-93F3-1D89F26BDF78}</ProjectGuid>
     <RootNamespace>OpenCV</RootNamespace>
@@ -138,17 +149,6 @@
       <AdditionalDependencies>opencv_world310.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="FileIterator.cpp" />
-    <ClCompile Include="Feature.cpp" />
-    <ClCompile Include="LibSVMDataWriter.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="FileIterator.h" />
-    <ClInclude Include="Feature.h" />
-    <ClInclude Include="LibSVMDataWriter.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

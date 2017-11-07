@@ -15,28 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="Feature.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="LibSVMDataWriter.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="FileIterator.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
+    <ClInclude Include="src\FileIterator.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LibSVMDataWriter.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Feature.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Feature.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="LibSVMDataWriter.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="FileIterator.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
+    <ClCompile Include="src\LibSVMDataWriter.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Feature.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileIterator.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
