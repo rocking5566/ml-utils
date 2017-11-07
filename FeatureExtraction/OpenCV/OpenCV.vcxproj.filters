@@ -24,6 +24,9 @@
     <ClInclude Include="src\Feature.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\util\SysUtil.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibSVMDataWriter.cpp">
