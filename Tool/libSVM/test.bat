@@ -1,0 +1,10 @@
+svm-predict -b 1 right_ULSee_all_test_hog_144_1 right_ULSee_all_train_hog_144_with_left_flip.model output_file_1
+svm-predict -b 1 right_ULSee_all_test_hog_144_2 right_ULSee_all_train_hog_144_with_left_flip.model output_file_2
+svm-predict -b 1 right_ULSee_all_test_hog_144_3 right_ULSee_all_train_hog_144_with_left_flip.model output_file_3
+svm-predict -b 1 right_ULSee_all_test_hog_144_4 right_ULSee_all_train_hog_144_with_left_flip.model output_file_4
+svm-predict -b 1 right_ULSee_all_test_hog_144_5 right_ULSee_all_train_hog_144_with_left_flip.model output_file_5
+svm-predict -b 1 right_ULSee_all_test_hog_144_6 right_ULSee_all_train_hog_144_with_left_flip.model output_file_6
+svm-predict -b 1 right_ULSee_all_test_hog_144_7 right_ULSee_all_train_hog_144_with_left_flip.model output_file_7
+svm-predict -b 1 right_ULSee_all_test_hog_144_8 right_ULSee_all_train_hog_144_with_left_flip.model output_file_8
+
+pause
