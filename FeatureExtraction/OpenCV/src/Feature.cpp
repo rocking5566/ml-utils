@@ -4,23 +4,6 @@
 using namespace std;
 using namespace cv;
 
-std::vector<int> Feature::CalcHistogram(const unsigned char* srcData, int width, int height, int binCount)
-{
-    vector<int> histogram;
-    histogram.resize(binCount);
-
-    for (int i = 0; i < height; ++i)
-    {
-        for (int j = 0; j < width; ++j)
-        {
-            int ii = i * width;
-            ++histogram[*(srcData + ii + j)];
-        }
-    }
-
-    return std::move(histogram);
-}
-
 std::vector<float> Feature::GetHogDescriptor8316(const Mat& img)
 {
     Mat imgResize = img;

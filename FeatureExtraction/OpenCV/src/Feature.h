@@ -5,8 +5,6 @@
 
 namespace Feature
 {
-    std::vector<int> CalcHistogram(const unsigned char* srcData, int width, int height, int binCount);
-
     std::vector<float> GetHogDescriptor8316(const cv::Mat& img);
     std::vector<float> GetHogDescriptor1764(const cv::Mat& img);
     std::vector<float> GetHogDescriptor_64x128_324(const cv::Mat& img);

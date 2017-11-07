@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\util\SysUtil.h" />
+    <ClInclude Include="..\..\Utility\ImageUtil.h" />
+    <ClInclude Include="..\..\Utility\SysUtil.h" />
     <ClInclude Include="src\Feature.h" />
     <ClInclude Include="src\FileIterator.h" />
     <ClInclude Include="src\LibSVMDataWriter.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Utility\ImageUtil.cpp" />
     <ClCompile Include="src\Feature.cpp" />
     <ClCompile Include="src\FileIterator.cpp" />
     <ClCompile Include="src\LibSVMDataWriter.cpp" />
