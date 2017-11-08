@@ -35,7 +35,7 @@ void ImageUtil::PlotHistogram(double* hist, int histSize)
     int bin_w = cvRound((double)hist_w / histSize);
     Mat histImage(hist_h, hist_w, CV_8UC3, Scalar(0, 0, 0));
 
-    int max = *std::max_element(hist, hist + histSize);
+    double max = *std::max_element(hist, hist + histSize);
     max = max != 0 ? max : 1;
 
     double scale = double(histImage.rows - 1) / max;
