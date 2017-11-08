@@ -11,7 +11,8 @@ enum EImageProcess
 
 enum EIteratorOperation
 {
-    ePlotHogFeature
+    eWriteFileName,
+    ePlotHogFeature,
 };
 
 

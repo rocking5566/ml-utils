@@ -1,4 +1,5 @@
 #include "MLControl.h"
+#include <fstream>
 #include "LibSVMDataWriter.h"
 #include "FileIterator.h"
 #include "Feature.h"
@@ -179,13 +180,20 @@ void MLControl::IterateImages(const std::string& sImgpath, const std::string& sF
 {
     CFileIterator positiveIter(sImgpath, sFilter);
     int index = 1;
+    fstream fp;
+    fp.open("negative_test_RotateMinrror.txt", ios::out);
+    fp << sImgpath << endl;
+
     while (positiveIter.FindNext())
     {
-        cout << index++ << " - " << positiveIter.FullFileName() << endl;
 
         switch (type)
         {
+        case eWriteFileName:
+            fp << index++ << " - " << positiveIter.FullFileName() << endl;
+            break;
         case ePlotHogFeature:
+            cout << index++ << " - " << positiveIter.FullFileName() << endl;
             PlotHogFeature(positiveIter.FullFileName(), eOriginal);
             break;
         default:
