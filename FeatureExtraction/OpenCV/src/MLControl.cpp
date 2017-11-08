@@ -216,6 +216,6 @@ void MLControl::PlotHogFeature(const std::string& sImgpath, EImageProcess type)
 
     vector<float>descriptorsVec = Feature::GetHogDescriptor_32x64_144(img);
     std::copy(descriptorsVec.begin(), descriptorsVec.end(), descriptors);
-    ImageUtil::PlotVector(descriptors, descriptorsVec.size());
+    ImageUtil::PlotVector(descriptors, descriptorsVec.size(), 1);
     waitKey(0);
 }
