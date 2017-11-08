@@ -2,6 +2,7 @@
 #include "LibSVMDataWriter.h"
 #include "FileIterator.h"
 #include "Feature.h"
+#include "ImageUtil.h"
 #include "opencv2/opencv.hpp"
 
 #define POSITIVE_LABEL 1
@@ -171,4 +172,42 @@ void MLControl::GenerateTestingData()
         , "*LBP_L.jpg"
         , NEGATIVE_LABEL
         , eFlip);
+}
+
+
+void MLControl::IterateImages(const std::string& sImgpath, const std::string& sFilter, EIteratorOperation type)
+{
+    CFileIterator positiveIter(sImgpath, sFilter);
+    int index = 1;
+    while (positiveIter.FindNext())
+    {
+        cout << index++ << " - " << positiveIter.FullFileName() << endl;
+
+        switch (type)
+        {
+        case ePlotHogFeature:
+            PlotHogFeature(positiveIter.FullFileName(), eOriginal);
+            break;
+        default:
+            break;
+        }
+    }
+}
+
+void MLControl::PlotHogFeature(const std::string& sImgpath, EImageProcess type)
+{
+    double descriptors[144] = { 0 };
+    Mat img = imread(sImgpath);
+
+    imshow("img", img);
+
+    if (type == eFlip)
+    {
+        flip(img, img, 1);
+    }
+
+    vector<float>descriptorsVec = Feature::GetHogDescriptor_32x64_144(img);
+    std::copy(descriptorsVec.begin(), descriptorsVec.end(), descriptors);
+    ImageUtil::PlotVector(descriptors, descriptorsVec.size());
+    waitKey(0);
 }
