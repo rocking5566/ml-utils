@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\FileIterator.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
     <ClInclude Include="src\LibSVMDataWriter.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
@@ -33,6 +30,9 @@
     <ClInclude Include="src\MLControl.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Utility\FileIterator.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\LibSVMDataWriter.cpp">
@@ -44,13 +44,13 @@
     <ClCompile Include="src\Feature.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
-    <ClCompile Include="src\FileIterator.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Utility\ImageUtil.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
     <ClCompile Include="src\MLControl.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Utility\FileIterator.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
   </ItemGroup>
