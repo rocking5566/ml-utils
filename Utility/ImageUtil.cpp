@@ -29,16 +29,19 @@ void ImageUtil::ShowRgbImage(const cv::Mat& img)
     imshow("R", channel[2]);
 }
 
-void ImageUtil::PlotVector(double* dVec, int vecSize)
+void ImageUtil::PlotVector(double* dVec, int vecSize, double upperBound)
 {
     int hist_w = 512; int hist_h = 400;
     int bin_w = cvRound((double)hist_w / vecSize);
     Mat histImage(hist_h, hist_w, CV_8UC3, Scalar(0, 0, 0));
 
-    double max = *std::max_element(dVec, dVec + vecSize);
-    max = max != 0 ? max : 1;
+    if (upperBound == -1)
+    {
+        upperBound = *std::max_element(dVec, dVec + vecSize);
+        upperBound = upperBound != 0 ? upperBound : 1;
+    }
 
-    double scale = double(histImage.rows - 1) / max;
+    double scale = double(histImage.rows - 1) / upperBound;
 
     for (int i = 1; i < vecSize; i++)
     {

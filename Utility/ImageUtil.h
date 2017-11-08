@@ -7,6 +7,6 @@ namespace ImageUtil
 {
     std::vector<int> CalcHistogram(const unsigned char* srcData, int width, int height, int binCount);
     void ShowRgbImage(const cv::Mat& img);
-    void PlotVector(double* hist, int histSize);
+    void PlotVector(double* hist, int histSize, double upperBound = -1);
 };
 #endif // ImageUtil_h__
