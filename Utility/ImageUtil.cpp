@@ -29,21 +29,21 @@ void ImageUtil::ShowRgbImage(const cv::Mat& img)
     imshow("R", channel[2]);
 }
 
-void ImageUtil::PlotHistogram(double* hist, int histSize)
+void ImageUtil::PlotVector(double* dVec, int vecSize)
 {
     int hist_w = 512; int hist_h = 400;
-    int bin_w = cvRound((double)hist_w / histSize);
+    int bin_w = cvRound((double)hist_w / vecSize);
     Mat histImage(hist_h, hist_w, CV_8UC3, Scalar(0, 0, 0));
 
-    double max = *std::max_element(hist, hist + histSize);
+    double max = *std::max_element(dVec, dVec + vecSize);
     max = max != 0 ? max : 1;
 
     double scale = double(histImage.rows - 1) / max;
 
-    for (int i = 1; i < histSize; i++)
+    for (int i = 1; i < vecSize; i++)
     {
-        line(histImage, Point(bin_w * (i - 1), hist_h - (hist[i - 1] * scale)),
-            Point(bin_w * i, hist_h - (hist[i] * scale)),
+        line(histImage, Point(bin_w * (i - 1), hist_h - (dVec[i - 1] * scale)),
+            Point(bin_w * i, hist_h - (dVec[i] * scale)),
             Scalar(255, 0, 0), 2, 8, 0);
     }
 
