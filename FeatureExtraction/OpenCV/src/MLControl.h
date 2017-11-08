@@ -1,3 +1,6 @@
+#ifndef MLControl_h__
+#define MLControl_h__
+
 #include <string>
 
 enum EImageProcess
@@ -13,3 +16,4 @@ namespace MLControl
     void GenerateTestingData();
 }
 
+#endif // MLControl_h__
