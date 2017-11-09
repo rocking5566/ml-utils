@@ -204,7 +204,7 @@ void MLControl::GenerateRandomData(double max, int vecSize, int dataCount)
 void MLControl::IterateImages(const std::string& sImgpath, const std::string& sFilter, EIteratorOperation type)
 {
     CFileIterator positiveIter(sImgpath, sFilter);
-    int index = 1;
+    int index = 0;
     fstream fp;
 
     while (positiveIter.FindNext())
@@ -214,19 +214,23 @@ void MLControl::IterateImages(const std::string& sImgpath, const std::string& sF
         case eWriteFileName:
             if (index == 0)
             {
-                fp.open("negative_test_RotateMinrror.txt", ios::out);
+                fp.open("right_test_01_Network.txt", ios::out);
                 fp << sImgpath << endl;
             }
 
-            fp << index++ << " - " << positiveIter.FullFileName() << endl;
+            fp << index << " - " << positiveIter.FullFileName() << endl;
             break;
+
         case ePlotHogFeature:
-            cout << index++ << " - " << positiveIter.FullFileName() << endl;
+            cout << index << " - " << positiveIter.FullFileName() << endl;
             PlotHogFeature(positiveIter.FullFileName(), eOriginal);
             break;
+
         default:
             break;
         }
+
+        ++index;
     }
 }
 
