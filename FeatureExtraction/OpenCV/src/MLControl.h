@@ -25,6 +25,7 @@ namespace MLControl
 
     void IterateImages(const std::string& sImgpath, const std::string& sFilter, EIteratorOperation type = ePlotHogFeature);
     void PlotHogFeature(const std::string& sImgpath, EImageProcess type = eOriginal);
+    void CopySVMPredictFalseImage();
 }
 
 #endif // MLControl_h__

@@ -6,11 +6,13 @@
 #include "ImageUtil.h"
 #include "opencv2/opencv.hpp"
 #include "time.h"
+#include "LibSVMPredictResultReader.h"
+
 
 #define POSITIVE_LABEL 1
 #define NEGATIVE_LABEL 2
-#define TRAINING_DATA "right_ULSee_all_train_hog_32x64_144_with_left_flip"
-#define TESTING_DATA "right_ULSee_all_test_hog_32x64_144"
+#define TRAINING_DATA "right_ULSee_all_train_hog_64x128_144_with_left_flip"
+#define TESTING_DATA "right_ULSee_all_test_hog_64x128_144"
 
 using namespace std;
 using namespace cv;
@@ -32,7 +34,7 @@ void MLControl::WriteHogToLibSvmFromImg(const std::string& sImgpath, const std::
             flip(img, img, 1);
         }
 
-        vector<float>descriptors = Feature::GetHogDescriptor_32x64_144(img);
+        vector<float>descriptors = Feature::GetHogDescriptor_64x128_144(img);
         svmWriter.WriteBack<float>(label, descriptors);
     }
 
@@ -250,4 +252,30 @@ void MLControl::PlotHogFeature(const std::string& sImgpath, EImageProcess type)
     std::copy(descriptorsVec.begin(), descriptorsVec.end(), descriptors);
     ImageUtil::PlotVector(descriptors, descriptorsVec.size(), 1);
     waitKey(0);
+}
+
+void MLControl::CopySVMPredictFalseImage()
+{
+    string srcFolder = "D:/data/phone talking/positive_right_test_20170703/right_test_01_Network";
+    string dstFolder = "D:/data/phone talking/falsePositive";
+    CLibSVMPredictResultReader reader;
+    reader.Open("output_file_1");
+    set<int> setIndex = reader.GetFalseIndex(POSITIVE_LABEL);
+    CFileIterator positiveIter(srcFolder, "*.jpg");
+    int index = 0;
+    string copyCmd;
+    while (positiveIter.FindNext())
+    {
+        auto iter = setIndex.find(index);
+        if (iter != setIndex.end())
+        {
+            copyCmd = "copy \"" + positiveIter.FullFileName() + "\" \""+ dstFolder  +"/" + positiveIter.FileName() + "\"";
+            replace(copyCmd.begin(), copyCmd.end(), '/', '\\');
+            system(copyCmd.c_str());
+        }
+
+        ++index;
+    }
+
+    reader.Close();
 }
