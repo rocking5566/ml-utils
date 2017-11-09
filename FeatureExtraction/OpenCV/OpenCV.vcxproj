@@ -21,16 +21,16 @@
   <ItemGroup>
     <ClInclude Include="..\..\Utility\FileIterator.h" />
     <ClInclude Include="..\..\Utility\ImageUtil.h" />
+    <ClInclude Include="..\..\Utility\LibSVMDataWriter.h" />
     <ClInclude Include="..\..\Utility\SysUtil.h" />
     <ClInclude Include="src\Feature.h" />
-    <ClInclude Include="src\LibSVMDataWriter.h" />
     <ClInclude Include="src\MLControl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Utility\FileIterator.cpp" />
     <ClCompile Include="..\..\Utility\ImageUtil.cpp" />
+    <ClCompile Include="..\..\Utility\LibSVMDataWriter.cpp" />
     <ClCompile Include="src\Feature.cpp" />
-    <ClCompile Include="src\LibSVMDataWriter.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MLControl.cpp" />
   </ItemGroup>
