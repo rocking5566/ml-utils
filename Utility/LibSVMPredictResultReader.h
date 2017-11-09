@@ -12,7 +12,7 @@ public:
 
     void Open(std::string filePath);
     void Close();
-    std::set<int> GetFalseIndex(int positiveIndex);
+    std::set<int> GetFalseIndex(int trueIndex);
 
 private:
     std::fstream m_fp;
