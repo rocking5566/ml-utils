@@ -5,6 +5,7 @@
 #include "Feature.h"
 #include "ImageUtil.h"
 #include "opencv2/opencv.hpp"
+#include "time.h"
 
 #define POSITIVE_LABEL 1
 #define NEGATIVE_LABEL 2
@@ -175,6 +176,30 @@ void MLControl::GenerateTestingData()
         , eFlip);
 }
 
+
+void MLControl::GenerateRandomData(double max, int vecSize, int dataCount)
+{
+    string sSvmDataPath = (string)TESTING_DATA + "_Random";
+    int label = NEGATIVE_LABEL;
+    srand(time(NULL));
+
+    CLibSVMDataWriter svmWriter;
+    svmWriter.Open(sSvmDataPath);
+    vector<double> descriptors;
+    descriptors.resize(vecSize);
+
+    for (int i = 0; i < dataCount; ++i)
+    {
+        for (int j = 0; j < vecSize; ++j)
+        {
+            descriptors[j] = double(rand() % 1000) * max / 1000;
+        }
+
+        svmWriter.WriteBack<double>(label, descriptors);
+    }
+
+    svmWriter.Close();
+}
 
 void MLControl::IterateImages(const std::string& sImgpath, const std::string& sFilter, EIteratorOperation type)
 {
