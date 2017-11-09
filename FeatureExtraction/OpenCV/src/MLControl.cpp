@@ -206,15 +206,18 @@ void MLControl::IterateImages(const std::string& sImgpath, const std::string& sF
     CFileIterator positiveIter(sImgpath, sFilter);
     int index = 1;
     fstream fp;
-    fp.open("negative_test_RotateMinrror.txt", ios::out);
-    fp << sImgpath << endl;
 
     while (positiveIter.FindNext())
     {
-
         switch (type)
         {
         case eWriteFileName:
+            if (index == 0)
+            {
+                fp.open("negative_test_RotateMinrror.txt", ios::out);
+                fp << sImgpath << endl;
+            }
+
             fp << index++ << " - " << positiveIter.FullFileName() << endl;
             break;
         case ePlotHogFeature:
