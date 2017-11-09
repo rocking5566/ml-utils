@@ -256,12 +256,20 @@ void MLControl::PlotHogFeature(const std::string& sImgpath, EImageProcess type)
 
 void MLControl::CopySVMPredictFalseImage()
 {
-    string srcFolder = "D:/data/phone talking/positive_right_test_20170703/right_test_01_Network";
-    string dstFolder = "D:/data/phone talking/falsePositive";
+    CopySVMPredictFalseImage("D:/data/phone talking/positive_right_test_20170703/right_test_02_ULSee"
+        , "*.jpg"
+        , "D:/data/phone talking/falsePositive/right_test_02_ULSee"
+        , "output_file_2");
+}
+
+void MLControl::CopySVMPredictFalseImage(const std::string& srcPath, const std::string& sFilter, const std::string& dstPath, const std::string& sSVMPredictResult)
+{
+    string srcFolder = srcPath;
+    string dstFolder = dstPath;
     CLibSVMPredictResultReader reader;
-    reader.Open("output_file_1");
+    reader.Open(sSVMPredictResult);
     set<int> setIndex = reader.GetFalseIndex(POSITIVE_LABEL);
-    CFileIterator positiveIter(srcFolder, "*.jpg");
+    CFileIterator positiveIter(srcFolder, sFilter);
     int index = 0;
     string copyCmd;
     while (positiveIter.FindNext())
@@ -269,7 +277,7 @@ void MLControl::CopySVMPredictFalseImage()
         auto iter = setIndex.find(index);
         if (iter != setIndex.end())
         {
-            copyCmd = "copy \"" + positiveIter.FullFileName() + "\" \""+ dstFolder  +"/" + positiveIter.FileName() + "\"";
+            copyCmd = "copy \"" + positiveIter.FullFileName() + "\" \"" + dstFolder + "/" + positiveIter.FileName() + "\"";
             replace(copyCmd.begin(), copyCmd.end(), '/', '\\');
             system(copyCmd.c_str());
         }
