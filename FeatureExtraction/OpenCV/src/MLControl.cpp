@@ -2,7 +2,7 @@
 #include <fstream>
 #include "LibSVMDataWriter.h"
 #include "FileIterator.h"
-#include "Feature.h"
+#include "Feature/Feature.h"
 #include "ImageUtil.h"
 #include "opencv2/opencv.hpp"
 #include "time.h"
@@ -53,8 +53,20 @@ void MLControl::GenerateTrainingData()
         , "*.jpg"
         , POSITIVE_LABEL);
 
+    // 285 images
+    WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_right/ulsee_test"
+        , sSvmDataPath
+        , "*.jpg"
+        , POSITIVE_LABEL);
+
     // 5394 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_right/other_train"
+        , sSvmDataPath
+        , "*.jpg"
+        , POSITIVE_LABEL);
+
+    // 2300 images
+    WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_right/other_test"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL);
@@ -66,8 +78,22 @@ void MLControl::GenerateTrainingData()
         , POSITIVE_LABEL
         , eFlip);
 
+    // 350 images
+    WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_left/ulsee_test"
+        , sSvmDataPath
+        , "*.jpg"
+        , POSITIVE_LABEL
+        , eFlip);
+
     // 5434 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_left/other_train"
+        , sSvmDataPath
+        , "*.jpg"
+        , POSITIVE_LABEL
+        , eFlip);
+
+    // 2350 images
+    WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_left/other_test"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL
