@@ -13,11 +13,14 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="原始程式檔\Feature">
+      <UniqueIdentifier>{4e7ad8a3-c5d9-46cd-8d7d-d4cb758c0405}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="標頭檔\Feature">
+      <UniqueIdentifier>{d04d024e-bf98-4691-ba51-efcb1bebd921}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Feature.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Utility\SysUtil.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
@@ -36,12 +39,15 @@
     <ClInclude Include="..\..\Utility\LibSVMPredictResultReader.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
+    <ClInclude Include="src\Feature\Feature.h">
+      <Filter>標頭檔\Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Utility\ImageResizer.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Feature.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Utility\ImageUtil.cpp">
@@ -57,6 +63,12 @@
       <Filter>原始程式檔</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Utility\LibSVMPredictResultReader.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Feature\Feature.cpp">
+      <Filter>原始程式檔\Feature</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Utility\ImageResizer.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
   </ItemGroup>

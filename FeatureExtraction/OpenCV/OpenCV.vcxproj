@@ -20,19 +20,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Utility\FileIterator.h" />
+    <ClInclude Include="..\..\Utility\ImageResizer.h" />
     <ClInclude Include="..\..\Utility\ImageUtil.h" />
     <ClInclude Include="..\..\Utility\LibSVMDataWriter.h" />
     <ClInclude Include="..\..\Utility\LibSVMPredictResultReader.h" />
     <ClInclude Include="..\..\Utility\SysUtil.h" />
-    <ClInclude Include="src\Feature.h" />
+    <ClInclude Include="src\Feature\Feature.h" />
     <ClInclude Include="src\MLControl.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Utility\FileIterator.cpp" />
+    <ClCompile Include="..\..\Utility\ImageResizer.cpp" />
     <ClCompile Include="..\..\Utility\ImageUtil.cpp" />
     <ClCompile Include="..\..\Utility\LibSVMDataWriter.cpp" />
     <ClCompile Include="..\..\Utility\LibSVMPredictResultReader.cpp" />
-    <ClCompile Include="src\Feature.cpp" />
+    <ClCompile Include="src\Feature\Feature.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\MLControl.cpp" />
   </ItemGroup>
