@@ -11,8 +11,8 @@
 
 #define POSITIVE_LABEL 1
 #define NEGATIVE_LABEL 2
-#define TRAINING_DATA "right_ULSee_all_train_hog_64x128_144_with_left_flip"
-#define TESTING_DATA "right_ULSee_all_test_hog_64x128_144"
+#define TRAINING_DATA "right_all_train_hog_64x128_81"
+#define TESTING_DATA "right_all_test_hog_64x128_81"
 
 using namespace std;
 using namespace cv;
@@ -34,7 +34,7 @@ void MLControl::WriteHogToLibSvmFromImg(const std::string& sImgpath, const std::
             flip(img, img, 1);
         }
 
-        vector<float>descriptors = Feature::GetHogDescriptor_64x128_144(img);
+        vector<float>descriptors = Feature::GetHogDescriptor_64x128_81(img);
         svmWriter.WriteBack<float>(label, descriptors);
     }
 
@@ -47,7 +47,7 @@ void MLControl::GenerateTrainingData()
     string sSvmDataPath = TRAINING_DATA;
 
     // =====================================Positive=================================================
-    // 222 images
+    // 173 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_right/ulsee_train"
         , sSvmDataPath
         , "*.jpg"
@@ -71,7 +71,7 @@ void MLControl::GenerateTrainingData()
         , "*.jpg"
         , POSITIVE_LABEL);
 
-    // 217 images
+    // 225 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_left/ulsee_train"
         , sSvmDataPath
         , "*.jpg"
@@ -100,7 +100,7 @@ void MLControl::GenerateTrainingData()
         , eFlip);
 
     // =====================================Negative=================================================
-    // 81 images
+    // 102 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_right/ulsee_train"
         , sSvmDataPath
         , "*.jpg"
@@ -112,7 +112,13 @@ void MLControl::GenerateTrainingData()
         , "*.jpg"
         , NEGATIVE_LABEL);
 
-    // 33 images
+    // 34030 images
+//     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_right/celebface_test"
+//         , sSvmDataPath
+//         , "*.jpg"
+//         , NEGATIVE_LABEL);
+
+    // 79 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_left/ulsee_train"
         , sSvmDataPath
         , "*.jpg"
@@ -125,6 +131,13 @@ void MLControl::GenerateTrainingData()
         , "*.jpg"
         , NEGATIVE_LABEL
         , eFlip);
+
+    // 23221 images
+//     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_left/celebface_test"
+//         , sSvmDataPath
+//         , "*.jpg"
+//         , NEGATIVE_LABEL
+//         , eFlip);
 }
 
 void MLControl::GenerateTestingData()
@@ -135,26 +148,26 @@ void MLControl::GenerateTestingData()
 
     // =====================================Positive=================================================
     // 3078 images
-    WriteHogToLibSvmFromImg("D:/data/phone talking/positive_right_test_20170703/right_test_01_Network"
+    WriteHogToLibSvmFromImg("D:/data/phone talking/all data/positive_right_test_20170703/right_test_01_Network"
         , sSvmDataPath + "_1"
         , "*.jpg"
         , POSITIVE_LABEL);
 
     // 1590 images
-    WriteHogToLibSvmFromImg("D:/data/phone talking/positive_right_test_20170703/right_test_02_ULSee"
+    WriteHogToLibSvmFromImg("D:/data/phone talking/all data/positive_right_test_20170703/right_test_02_ULSee"
         , sSvmDataPath + "_2"
         , "*.jpg"
         , POSITIVE_LABEL);
 
     // 3093 images - flip
-    WriteHogToLibSvmFromImg("D:/data/phone talking/positive_left_test_20170703/left_test_01_network"
+    WriteHogToLibSvmFromImg("D:/data/phone talking/all data/positive_left_test_20170703/left_test_01_network"
         , sSvmDataPath + "_3"
         , "*.jpg"
         , POSITIVE_LABEL
         , eFlip);
 
     // 1590 images - flip
-    WriteHogToLibSvmFromImg("D:/data/phone talking/positive_left_test_20170703/left_test_02_ULSee"
+    WriteHogToLibSvmFromImg("D:/data/phone talking/all data/positive_left_test_20170703/left_test_02_ULSee"
         , sSvmDataPath + "_4"
         , "*.jpg"
         , POSITIVE_LABEL
@@ -162,26 +175,26 @@ void MLControl::GenerateTestingData()
 
     // =====================================Negative=================================================
     // 34105 images
-    WriteHogToLibSvmFromImg("D:/data/phone talking/negative_test_CelebFace"
+    WriteHogToLibSvmFromImg("D:/data/phone talking/all data/negative_test_CelebFace"
         , sSvmDataPath + "_5"
         , "*LBP_R.jpg"
         , NEGATIVE_LABEL);
 
     // 11180 images
-    WriteHogToLibSvmFromImg("D:/data/phone talking/negative_test_RotateMinrror"
+    WriteHogToLibSvmFromImg("D:/data/phone talking/all data/negative_test_RotateMinrror"
         , sSvmDataPath + "_6"
         , "*LBP_R.jpg"
         , NEGATIVE_LABEL);
 
     // 34105 images - flip
-    WriteHogToLibSvmFromImg("D:/data/phone talking/negative_test_CelebFace"
+    WriteHogToLibSvmFromImg("D:/data/phone talking/all data/negative_test_CelebFace"
         , sSvmDataPath + "_7"
         , "*LBP_L.jpg"
         , NEGATIVE_LABEL
         , eFlip);
 
     // 11180 images - flip
-    WriteHogToLibSvmFromImg("D:/data/phone talking/negative_test_RotateMinrror"
+    WriteHogToLibSvmFromImg("D:/data/phone talking/all data/negative_test_RotateMinrror"
         , sSvmDataPath + "_8"
         , "*LBP_L.jpg"
         , NEGATIVE_LABEL
@@ -269,16 +282,17 @@ void MLControl::CopySVMPredictFalseImage()
     CopySVMPredictFalseImage("D:/data/phone talking/positive_right_test_20170703/right_test_02_ULSee"
         , "*.jpg"
         , "D:/data/phone talking/falsePositive/right_test_02_ULSee"
-        , "output_file_2");
+        , "output_file_2"
+        , POSITIVE_LABEL);
 }
 
-void MLControl::CopySVMPredictFalseImage(const std::string& srcPath, const std::string& sFilter, const std::string& dstPath, const std::string& sSVMPredictResult)
+void MLControl::CopySVMPredictFalseImage(const std::string& srcPath, const std::string& sFilter, const std::string& dstPath, const std::string& sSVMPredictResult, int trueIndex)
 {
     string srcFolder = srcPath;
     string dstFolder = dstPath;
     CLibSVMPredictResultReader reader;
     reader.Open(sSVMPredictResult);
-    set<int> setIndex = reader.GetFalseIndex(POSITIVE_LABEL);
+    set<int> setIndex = reader.GetFalseIndex(trueIndex);
     CFileIterator positiveIter(srcFolder, sFilter);
     int index = 0;
     string copyCmd;
