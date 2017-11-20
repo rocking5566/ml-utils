@@ -9,8 +9,12 @@ namespace Feature
     std::vector<float> GetHogDescriptor1764(const cv::Mat& img);
     std::vector<float> GetHogDescriptor_64x128_324(const cv::Mat& img);
     std::vector<float> GetHogDescriptor_64x128_144(const cv::Mat& img);
+    std::vector<float> GetHogDescriptor_64x128_81(const cv::Mat& img);
     std::vector<float> GetHogDescriptor_32x64_324(const cv::Mat& img);
     std::vector<float> GetHogDescriptor_32x64_144(const cv::Mat& img);
+
+    std::vector<double> GetLbpDescriptor_177(const cv::Mat& img);
+    std::vector<double> GetHogLbpDescriptor_321(const cv::Mat& img);
 }
 
 

@@ -1,4 +1,5 @@
 #include "Feature.h"
+#include "LBP.h"
 #include <iostream>
 
 using namespace std;
@@ -105,6 +106,31 @@ std::vector<float> Feature::GetHogDescriptor_64x128_144(const cv::Mat& img)
     return move(retHogDescriptor);
 }
 
+std::vector<float> Feature::GetHogDescriptor_64x128_81(const cv::Mat& img)
+{
+    Mat imgResize = img;
+    if (imgResize.size() != Size(64, 128))
+    {
+        resize(imgResize, imgResize, Size(64, 128));
+    }
+
+    //     dimension per block= 9
+    //     number of block per window = [(64 - 32) / 16 + 1] * [(128 - 64) / 32 + 1] = 3 * 3 = 9
+    //     dimension per window = 9 * 9 = 81
+    vector<float> retHogDescriptor;
+    int bins = 9;
+    Size winSize(64, 128);
+    Size blockSize = Size(32, 64);
+    Size strideSize = Size(16, 32);
+    Size cellSize = Size(32, 64);
+
+    static HOGDescriptor *hog = new  HOGDescriptor(winSize, blockSize, strideSize, cellSize, bins);
+
+    hog->compute(imgResize, retHogDescriptor);
+
+    return move(retHogDescriptor);
+}
+
 std::vector<float> Feature::GetHogDescriptor_32x64_324(const cv::Mat& img)
 {
     Mat imgResize = img;
@@ -153,4 +179,75 @@ std::vector<float> Feature::GetHogDescriptor_32x64_144(const cv::Mat& img)
     hog->compute(imgResize, retHogDescriptor);
 
     return move(retHogDescriptor);
+}
+
+std::vector<double> Feature::GetLbpDescriptor_177(const cv::Mat& img)
+{
+    Mat imgResize = img;
+    Mat lbpImg;
+    int FxRadius = 1;
+    int FyRadius = 1;
+    int BoderLength = 1;
+    int XYNeighborPoints = 8;
+    bool bBilinearInterpolation = 0;
+    int lbpBinCount = LBP_FEADIMEN;
+
+    vector<double> retLbpHist;
+    retLbpHist.resize(3 * lbpBinCount);
+
+    if (imgResize.size() != Size(100, 180))
+    {
+        resize(imgResize, imgResize, Size(100, 180));
+    }
+
+    lbpImg.create(imgResize.size(), CV_8UC1);
+
+    int width = imgResize.cols;
+    int height = imgResize.rows;
+
+    uchar* pImgResize = imgResize.data;
+
+    CreateLBPImage(pImgResize, lbpImg.data, height, width, FxRadius, FyRadius, XYNeighborPoints,
+        BoderLength, lbpBinCount, bBilinearInterpolation, retLbpHist.data());
+
+    // Get LBP histogram from ROI
+    // W x H = 100x180, middle y = 0.125 x height, 0.75(w)x0.75(h)
+    float ratio_w = 0.75f;
+    float ratio_h = 0.75f;
+    int rw = width * ratio_w;
+    int rx = (width - rw) / 2 - 1;
+    int rh = height * ratio_h;
+    int ry = (height - rh) / 2 - 1;
+    GetLbpHist(lbpImg.data, height, width, rx, ry, rw, rh, BoderLength, lbpBinCount, retLbpHist.data() + LBP_FEADIMEN * 0);
+
+    // W x H = 100x180, x = 0.0 x width, y = 0.125 x height, 0.5(w)x0.75(h)
+    ratio_w = 0.5;
+    rw = width * ratio_w;
+    rx = 0;
+    GetLbpHist(lbpImg.data, height, width, rx, ry, rw, rh, BoderLength, lbpBinCount, retLbpHist.data() + LBP_FEADIMEN * 1);
+
+    // W x H = 100x180, y = 0.5 x height, 0.75(w)x0.5(h)
+    ratio_w = 0.75f;
+    rw = width * ratio_w;
+    rx = (width - rw) / 2 - 1;
+
+    ratio_h = 0.5f;
+    rh = height * ratio_h;
+    ry = height - rh - 1;
+    GetLbpHist(lbpImg.data, height, width, rx, ry, rw, rh, BoderLength, lbpBinCount, retLbpHist.data() + LBP_FEADIMEN * 2);
+
+    return move(retLbpHist);
+}
+
+std::vector<double> Feature::GetHogLbpDescriptor_321(const cv::Mat& img)
+{
+    vector<float>hog = GetHogDescriptor_64x128_144(img);
+    vector<double>lbp = GetLbpDescriptor_177(img);
+
+    vector<double> ret;
+    ret.resize(hog.size());
+    copy(hog.begin(), hog.end(), ret.begin());
+    ret.insert(ret.end(), lbp.begin(), lbp.end());
+
+    return move(ret);
 }

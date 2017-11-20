@@ -26,6 +26,7 @@
     <ClInclude Include="..\..\Utility\LibSVMPredictResultReader.h" />
     <ClInclude Include="..\..\Utility\SysUtil.h" />
     <ClInclude Include="src\Feature\Feature.h" />
+    <ClInclude Include="src\Feature\LBP.h" />
     <ClInclude Include="src\MLControl.h" />
   </ItemGroup>
   <ItemGroup>
