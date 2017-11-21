@@ -123,13 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Feature\FeatureScaler.cpp" />
+    <ClCompile Include="..\..\FeatureScaler.cpp" />
     <ClCompile Include="..\..\Wrapper\svm.cpp" />
     <ClCompile Include="..\..\Wrapper\SvmClassifier.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Feature\FeatureScaler.h" />
+    <ClInclude Include="..\..\FeatureScaler.h" />
     <ClInclude Include="..\..\Wrapper\svm.h" />
     <ClInclude Include="..\..\Wrapper\SvmClassifier.h" />
   </ItemGroup>

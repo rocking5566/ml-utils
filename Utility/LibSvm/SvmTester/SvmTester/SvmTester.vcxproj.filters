@@ -24,7 +24,7 @@
     <ClCompile Include="..\..\Wrapper\svm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Feature\FeatureScaler.cpp">
+    <ClCompile Include="..\..\FeatureScaler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="..\..\Wrapper\SvmClassifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Feature\FeatureScaler.h">
+    <ClInclude Include="..\..\FeatureScaler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
