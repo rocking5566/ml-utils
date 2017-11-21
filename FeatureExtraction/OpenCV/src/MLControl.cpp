@@ -1,12 +1,12 @@
 #include "MLControl.h"
 #include <fstream>
-#include "LibSVMDataWriter.h"
-#include "FileIterator.h"
+#include "LibSvm/LibSVMDataWriter.h"
+#include "Sys/FileIterator.h"
 #include "Feature/Feature.h"
-#include "ImageUtil.h"
+#include "Image/ImageUtil.h"
 #include "opencv2/opencv.hpp"
 #include "time.h"
-#include "LibSVMPredictResultReader.h"
+#include "LibSvm/LibSVMPredictResultReader.h"
 
 
 #define POSITIVE_LABEL 1

@@ -13,39 +13,33 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="原始程式檔\Feature">
-      <UniqueIdentifier>{4e7ad8a3-c5d9-46cd-8d7d-d4cb758c0405}</UniqueIdentifier>
-    </Filter>
     <Filter Include="標頭檔\Feature">
-      <UniqueIdentifier>{d04d024e-bf98-4691-ba51-efcb1bebd921}</UniqueIdentifier>
+      <UniqueIdentifier>{a7b5b1cf-1bd7-4030-91a7-087fb40e9ebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="原始程式檔\Feature">
+      <UniqueIdentifier>{f905ae2f-42b8-457a-b496-e95e5006c307}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Utility\SysUtil.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Utility\ImageUtil.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
     <ClInclude Include="src\MLControl.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\FileIterator.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Utility\LibSVMDataWriter.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Utility\LibSVMPredictResultReader.h">
-      <Filter>標頭檔</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Feature\Feature.h">
+    <ClInclude Include="..\..\Utility\Feature\Feature.h">
       <Filter>標頭檔\Feature</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Utility\ImageResizer.h">
+    <ClInclude Include="..\..\Utility\Feature\LBP.h">
+      <Filter>標頭檔\Feature</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Utility\LibSvm\LibSVMPredictResultReader.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
-    <ClInclude Include="src\Feature\LBP.h">
+    <ClInclude Include="..\..\Utility\LibSvm\LibSVMDataWriter.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Utility\Image\ImageUtil.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Utility\Sys\FileIterator.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,25 +47,22 @@
     <ClCompile Include="src\main.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\ImageUtil.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
     <ClCompile Include="src\MLControl.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\FileIterator.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Utility\LibSVMDataWriter.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Utility\LibSVMPredictResultReader.cpp">
-      <Filter>原始程式檔</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Feature\Feature.cpp">
+    <ClCompile Include="..\..\Utility\Feature\Feature.cpp">
       <Filter>原始程式檔\Feature</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Utility\ImageResizer.cpp">
+    <ClCompile Include="..\..\Utility\LibSvm\LibSVMPredictResultReader.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Utility\LibSvm\LibSVMDataWriter.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Utility\Image\ImageUtil.cpp">
+      <Filter>原始程式檔</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Utility\Sys\FileIterator.cpp">
       <Filter>原始程式檔</Filter>
     </ClCompile>
   </ItemGroup>
