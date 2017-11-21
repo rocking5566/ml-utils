@@ -11,7 +11,7 @@ CFeatureScaler::~CFeatureScaler()
 
 }
 
-void CFeatureScaler::LoadScaleAndFeature(const std::string& sLibSVMScaleFilePath)
+void CFeatureScaler::LoadScaleAndFeatureInfo(const std::string& sLibSVMScaleFilePath)
 {
     FILE *fpScaleFile = fopen(sLibSVMScaleFilePath.c_str(), "r");
 

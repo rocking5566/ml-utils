@@ -23,7 +23,7 @@ public:
     CFeatureScaler();
     ~CFeatureScaler();
 
-    void LoadScaleAndFeature(const std::string& sLibSVMScaleFilePath);
+    void LoadScaleAndFeatureInfo(const std::string& sLibSVMScaleFilePath);
     void ScaleFeature(double *feature);
 
 private:
