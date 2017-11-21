@@ -1,0 +1,2 @@
+svm-scale -s right_all_train_hog_64x128_81.range right_all_train_hog_64x128_81 > right_all_train_hog_64x128_81_scale
+pause
