@@ -1,6 +1,6 @@
 
 //author: jethro shen jethro@ulsee.compare
-#include <math.h>  
+#include <cmath>  
 #include <fstream>
 
 // 
