@@ -8,15 +8,27 @@ echo "====================================================="
 echo "It might take some time while executing this command in the first time"
 echo "====================================================="
 
-[ $# -eq 0 ] && nvidia-docker run -it --rm -v /:/workspace/host_os bvlc/caffe:gpu bash
+xhost +
+[ $# -eq 0 ] && GPU=0 nvidia-docker run  --privileged -it --rm \
+                      --env DISPLAY=$DISPLAY \
+                      --env="QT_X11_NO_MITSHM=1" \
+                      -v /dev/video0:/dev/video0 \
+                      -v /tmp/.X11-unix:/tmp/.X11-unix:ro  \
+                      -v /:/workspace/host_os bvlc/caffe:gpu bash
 
 if [ $# -eq 1 ]; then
 
     CONTAINER_NAME="$1"
 
     if [ ! "$(docker ps -aqf name=${CONTAINER_NAME})" ]; then
-        nvidia-docker run -it --name ${CONTAINER_NAME} -v /:/workspace/host_os bvlc/caffe:gpu bash
+        GPU=0 nvidia-docker run --privileged -it --name ${CONTAINER_NAME} \
+              --env DISPLAY=$DISPLAY \
+              --env="QT_X11_NO_MITSHM=1" \
+              -v /dev/video0:/dev/video0 \
+              -v /tmp/.X11-unix:/tmp/.X11-unix:ro  \
+              -v /:/workspace/host_os bvlc/caffe:gpu bash
     else
-        nvidia-docker start -i ${CONTAINER_NAME}
+        GPU=0 nvidia-docker start -i ${CONTAINER_NAME}
     fi
 fi
+xhost -
