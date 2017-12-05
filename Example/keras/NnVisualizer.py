@@ -7,7 +7,8 @@ import numpy as np
 
 
 class Histories(keras.callbacks.Callback):
-	def __init__(self):
+	def __init__(self, is_center_loss = False):
+		self.is_center_loss = is_center_loss
 		return
 
 	def on_train_begin(self, logs={}):
@@ -20,13 +21,24 @@ class Histories(keras.callbacks.Callback):
 		return
 
 	def on_epoch_end(self, epoch, logs={}):
-		input = self.model.input #this can be a list or a matrix.
-		labels = np.argmax(self.validation_data[1],axis=1) #make one-hot vector to index for visualization
-		
+		#print('\n=========')
+		#print(len(self.validation_data)) #be careful of the dimenstion of the self.validation_data, somehow some extra dim will be included
+		#for i in range(0, len(self.validation_data)):
+		#	print(self.validation_data[i].shape)
+		#print('=========')
+
+		if self.is_center_loss:
+			input = self.model.input[0]
+			labels = self.validation_data[1].flatten()
+
+		else:
+			input = self.model.input
+			labels = np.argmax(self.validation_data[1],axis=1) #make one-hot vector to index for visualization
+
 		visualizer = Model(inputs=input, outputs=self.model.get_layer('visualize_layer').output)
 		distribute_2d = visualizer.predict(self.validation_data[0])
 		
-		visualize(distribute_2d, labels,epoch)
+		visualize(distribute_2d, labels, epoch)
 		
 		return
 
