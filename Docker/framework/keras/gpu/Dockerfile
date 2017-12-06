@@ -35,6 +35,9 @@ RUN conda install -y python=${python_version} && \
     pip install sklearn_pandas && \
     git clone git://github.com/fchollet/keras.git /src && pip install -e /src[tests] && \
     pip install git+git://github.com/fchollet/keras.git && \
+    pip install pydot && \
+    pip install graphviz && \
+    pip install opencv-python==3.3.0.10 && \
     conda clean -yt
 
 #RUN conda install -c menpo opencv3=3.3.0
