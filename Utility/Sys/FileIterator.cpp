@@ -31,12 +31,12 @@ bool CFileIterator::FindNext()
     return ret;
 }
 
-std::string CFileIterator::FileName()
+std::string CFileIterator::FileName() const
 {
     return m_fileAttribute.name;
 }
 
-std::string CFileIterator::FullFileName()
+std::string CFileIterator::FullFileName() const
 {
     return m_sPath + "/" + m_fileAttribute.name;
 }

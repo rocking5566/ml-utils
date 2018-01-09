@@ -11,8 +11,8 @@ public:
     ~CFileIterator();
 
     bool FindNext();
-    std::string FileName();
-    std::string FullFileName();
+    std::string FileName() const;
+    std::string FullFileName() const;
 
 private:
     std::string m_sPath;
