@@ -11,20 +11,7 @@ For developer environments
 ```sh
 $ sudo ./install_docker_ce_ubuntu_amd64.sh
 $ sudo ./install_nvidia_docker_ubuntu_amd64.sh
-
-# [Option] Test is Docker CE installed correctly
-$ docker run --rm hello-world
-
-# [Option] Test nvidia-smi with the latest official CUDA image
-# This command will take a long time
-$ docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 ```
-
-For production environments
-- To do
-
-### Redhat 7.0
-- To do
 
 ## Create environment in Docker
 ### Caffe
