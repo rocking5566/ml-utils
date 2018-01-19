@@ -14,6 +14,20 @@ $ sudo ./install_nvidia_docker_ubuntu_amd64.sh
 ```
 
 ## Create environment in Docker
+### Keras
+To run the clean Keras (GPU) environment
+```sh
+$ cd Docker/framework/keras/gpu
+$ sudo make build   # Build docker file
+$ sudo make bash
+```
+Run the clean Keras (GPU) environment on the web (IPython notebook and TensorBoard)
+```sh
+$ cd Docker/framework/keras/gpu
+$ sudo make notebook
+```
+You will see the notebook and Tensorboard URL in the terminal
+
 ### Caffe
 To run the clean caffe environment
 
