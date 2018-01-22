@@ -76,6 +76,8 @@ RUN cd $OPENCV_DIR/opencv-${opencv_version}/build && \
     make -j4 && \
     make install
 
+RUN rm $OPENCV_DIR/opencv-${opencv_version}.zip && apt-get -y install libgl1-mesa-glx
+
 EXPOSE 8888 6006
 
 # [Warning] - Do not use root in public IP 
