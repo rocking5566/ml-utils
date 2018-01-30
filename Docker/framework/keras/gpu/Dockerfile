@@ -79,6 +79,7 @@ RUN cd $OPENCV_DIR/opencv-${opencv_version}/build && \
 RUN rm $OPENCV_DIR/opencv-${opencv_version}.zip && apt-get -y install libgl1-mesa-glx
 
 RUN pip install --upgrade --ignore-installed setuptools && pip install --no-cache-dir git+git://github.com/ppwwyyxx/tensorpack
+RUN pip install beautifulsoup4 lxml
 
 EXPOSE 8888 6006
 
