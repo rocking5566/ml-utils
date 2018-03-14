@@ -11,8 +11,8 @@
 
 #define POSITIVE_LABEL 1
 #define NEGATIVE_LABEL 2
-#define TRAINING_DATA "right_all_train_hog_64x128_81"
-#define TESTING_DATA "right_all_test_hog_64x128_81"
+#define TRAINING_DATA "right_all_train_hog_64x128_144"
+#define TESTING_DATA "right_all_test_hog_64x128_144"
 
 using namespace std;
 using namespace cv;
@@ -34,7 +34,7 @@ void MLControl::WriteHogToLibSvmFromImg(const std::string& sImgpath, const std::
             flip(img, img, 1);
         }
 
-        vector<float>descriptors = Feature::GetHogDescriptor_64x128_81(img);
+        vector<float>descriptors = Feature::GetHogDescriptor_64x128_144(img);
         svmWriter.WriteBack<float>(label, descriptors);
     }
 
@@ -47,52 +47,44 @@ void MLControl::GenerateTrainingData()
     string sSvmDataPath = TRAINING_DATA;
 
     // =====================================Positive=================================================
-    // 173 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_right/ulsee_train"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL);
 
-    // 285 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_right/ulsee_test"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL);
 
-    // 5394 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_right/other_train"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL);
 
-    // 2300 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_right/other_test"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL);
 
-    // 225 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_left/ulsee_train"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL
         , eFlip);
 
-    // 350 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_left/ulsee_test"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL
         , eFlip);
 
-    // 5434 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_left/other_train"
         , sSvmDataPath
         , "*.jpg"
         , POSITIVE_LABEL
         , eFlip);
 
-    // 2350 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/positive_left/other_test"
         , sSvmDataPath
         , "*.jpg"
@@ -100,44 +92,27 @@ void MLControl::GenerateTrainingData()
         , eFlip);
 
     // =====================================Negative=================================================
-    // 102 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_right/ulsee_train"
         , sSvmDataPath
         , "*.jpg"
         , NEGATIVE_LABEL);
 
-    // 8006 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_right/other_train"
         , sSvmDataPath
         , "*.jpg"
         , NEGATIVE_LABEL);
 
-    // 34030 images
-//     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_right/celebface_test"
-//         , sSvmDataPath
-//         , "*.jpg"
-//         , NEGATIVE_LABEL);
-
-    // 79 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_left/ulsee_train"
         , sSvmDataPath
         , "*.jpg"
         , NEGATIVE_LABEL
         , eFlip);
 
-    // 8012 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_left/other_train"
         , sSvmDataPath
         , "*.jpg"
         , NEGATIVE_LABEL
         , eFlip);
-
-    // 23221 images
-//     WriteHogToLibSvmFromImg("D:/data/phone talking/refine/negative_left/celebface_test"
-//         , sSvmDataPath
-//         , "*.jpg"
-//         , NEGATIVE_LABEL
-//         , eFlip);
 }
 
 void MLControl::GenerateTestingData()
@@ -147,26 +122,22 @@ void MLControl::GenerateTestingData()
     string sSvmDataPath = TESTING_DATA;
 
     // =====================================Positive=================================================
-    // 3078 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/all data/positive_right_test_20170703/right_test_01_Network"
         , sSvmDataPath + "_1"
         , "*.jpg"
         , POSITIVE_LABEL);
 
-    // 1590 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/all data/positive_right_test_20170703/right_test_02_ULSee"
         , sSvmDataPath + "_2"
         , "*.jpg"
         , POSITIVE_LABEL);
 
-    // 3093 images - flip
     WriteHogToLibSvmFromImg("D:/data/phone talking/all data/positive_left_test_20170703/left_test_01_network"
         , sSvmDataPath + "_3"
         , "*.jpg"
         , POSITIVE_LABEL
         , eFlip);
 
-    // 1590 images - flip
     WriteHogToLibSvmFromImg("D:/data/phone talking/all data/positive_left_test_20170703/left_test_02_ULSee"
         , sSvmDataPath + "_4"
         , "*.jpg"
@@ -174,26 +145,22 @@ void MLControl::GenerateTestingData()
         , eFlip);
 
     // =====================================Negative=================================================
-    // 34105 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/all data/negative_test_CelebFace"
         , sSvmDataPath + "_5"
         , "*LBP_R.jpg"
         , NEGATIVE_LABEL);
 
-    // 11180 images
     WriteHogToLibSvmFromImg("D:/data/phone talking/all data/negative_test_RotateMinrror"
         , sSvmDataPath + "_6"
         , "*LBP_R.jpg"
         , NEGATIVE_LABEL);
 
-    // 34105 images - flip
     WriteHogToLibSvmFromImg("D:/data/phone talking/all data/negative_test_CelebFace"
         , sSvmDataPath + "_7"
         , "*LBP_L.jpg"
         , NEGATIVE_LABEL
         , eFlip);
 
-    // 11180 images - flip
     WriteHogToLibSvmFromImg("D:/data/phone talking/all data/negative_test_RotateMinrror"
         , sSvmDataPath + "_8"
         , "*LBP_L.jpg"
